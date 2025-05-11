@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="left">
+      <div class="home">
+        <div><img class="invert" src="logo.svg" alt="" /></div>
+        <ul>
+          <li><img class="invert" src="home.svg" alt="" />Home</li>
+          <li><img class="invert" src="search.svg" alt="" />Search</li>
+        </ul>
+      </div>
+      <div class="library">
+        <div class="heading">
+          <div style="display: flex; align-items: center">
+            <img class="invert" src="library.svg" alt="" />
+          </div>
+          <h3>Library</h3>
+        </div>
+
+        <div class="footer">
+          <div><a href="">Legal</a></div>
+          <div><a href="">Privacy Center</a></div>
+          <div><a href="">Privacy Policies</a></div>
+          <div><a href="">Cookies</a></div>
+          <div><a href="">About Ads</a></div>
+          <div><a href="">Accessibility</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="header">
+        <div style="display: flex; align-items: center">
+          <svg
+            class="goBack"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            color="#9b9b9b"
+            fill="none"
+          >
+            <path
+              d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            class="goForward"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            color="#9b9b9b"
+            fill="none"
+          >
+            <path
+              d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div>
+          <button class="signUp">SignUp</button>
+          <button class="login">Login</button>
+        </div>
+      </div>
+      <div class="playlist">
+        <h2>Spotify Playlist</h2>
+        <div class="cardContainer">
+          <div class="card" onclick="bollywood()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Bollywood</h3>
+            <p>Hottest Hindi music that India is listening...</p>
+          </div>
+          <div class="card" onclick="hollywood()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Hollywood</h3>
+            <p>Vibe on the music beats</p>
+          </div>
+          <div class="card" onclick="haryanvi()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Haryanvi</h3>
+            <p>Feel the Thump of Haryanvi Vibes 🤘</p>
+          </div>
+          <div class="card" onclick="punjabi()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Punjabi Hits</h3>
+            <p>Full Volume, Pure Punjabi Vibe 💥</p>
+          </div>
+          <div class="card" onclick="bhakti()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Bhakti</h3>
+            <p>Soulful Vibes, Divine Tunes 🙏</p>
+          </div>
+          <div class="card" onclick="lofi()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Lo-Fi</h3>
+            <p>Chill. Relax. Repeat. 🎧</p>
+          </div>
+          <div class="card" onclick="hipHop()">
+            <div class="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                color="#000000"
+                fill="green"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <img
+              src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c"
+              alt=""
+            />
+            <h3>Hip-Hop</h3>
+            <p>Bars and Beats, Streets to Dreams 🎤</p>
+          </div>
+        </div>
+        <audio id="audioPlayer" src=""></audio>
+      </div>
+      <div class="playBar">
+        <div class="scroll-box">
+          <div class="scroll-text">
+            <h3>Current Song is playing</h3>
+          </div>
+        </div>
+        <div class="songButtons">
+          <img id="previousBt" src="previous.svg" alt="" />
+          <img id="playBt" src="playButton.svg" alt="" />
+          <img id="pauseBt" src="pause.svg" alt="" />
+          <img id="nextBt" src="next.svg" alt="" />
+        </div>
+        <div>
+          <input
+            type="range"
+            id="volumeControl"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
