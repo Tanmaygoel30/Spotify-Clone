@@ -299,12 +299,17 @@
           </div>
         </div>
         <div class="songButtons">
-          <img id="previousBt" src="previous.svg" alt="" />
-          <img id="playBt" src="playButton.svg" alt="" />
-          <img id="pauseBt" src="pause.svg" alt="" />
-          <img id="nextBt" src="next.svg" alt="" />
+          <div class="songControl">
+            <img id="previousBt" src="previous.svg" alt="" />
+            <img id="playBt" src="playButton.svg" alt="" />
+            <img id="pauseBt" src="pause.svg" alt="" />
+            <img id="nextBt" src="next.svg" alt="" />
+          </div>
+          <!-- <div id="songtime"></div> -->
+          <input type="range" id="songtime" min="0" max="1" value="0" />
         </div>
-        <div>
+        <div id="volSpace">
+          <img id="highVol" src="highVol.svg" alt="" />
           <input
             type="range"
             id="volumeControl"

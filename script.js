@@ -4,17 +4,9 @@ let audioPlayer = document.querySelector("#audioPlayer");
 let playBt = document.querySelector("#playBt");
 let pauseBt = document.querySelector("#pauseBt");
 
-playBt.addEventListener("click", () => {
-  audioPlayer.play();
-  playBt.style.display = "none";
-  pauseBt.style.display = "inline-block";
-});
-
-pauseBt.addEventListener("click", () => {
-  audioPlayer.pause();
-  playBt.style.display = "inline-block";
-  pauseBt.style.display = "none";
-});
+let songtime = document.querySelector("#songtime");
+let songDuration;
+let stepValue;
 
 let loadCard = function (content) {
   let song = content.tracks.items;
@@ -42,6 +34,13 @@ let loadCard = function (content) {
     card.addEventListener("click", () => {
       audioPlayer.src = playlist.preview_url;
       audioPlayer.play();
+      audioPlayer.addEventListener("loadedmetadata", () => {
+        songDuration = audioPlayer.duration;
+        console.log("Song Time " + songDuration);
+        stepValue = 1 / songDuration;
+        songtime.steps = stepValue;
+        console.log("Step value " + stepValue);
+      });
 
       playBt.style.display = "none";
       pauseBt.style.display = "inline-block";
@@ -176,16 +175,54 @@ forward.addEventListener("click", function () {
   history.forward();
 });
 
+playBt.addEventListener("click", () => {
+  audioPlayer.play();
+  playBt.style.display = "none";
+  pauseBt.style.display = "inline-block";
+  setTimeout(function () {
+    console.log("Time out func called");
+    playBt.style.display = "inline-block";
+    pauseBt.style.display = "none";
+  }, songDuration*1000);
+});
+
+pauseBt.addEventListener("click", () => {
+  audioPlayer.pause();
+  playBt.style.display = "inline-block";
+  pauseBt.style.display = "none";
+});
+
 const volControl = document.querySelector("#volumeControl");
 
 audioPlayer.volume = volControl.value;
 
+const highVol = document.querySelector("#highVol");
+
 volControl.addEventListener("input", function () {
   audioPlayer.volume = volControl.value;
+  if (volControl.value == 0) {
+    highVol.src = "mute.svg";
+  }
+  if (volControl.value < 0.6 && volControl.value != 0) {
+    highVol.src = "lowVol.svg";
+  }
+  if (volControl.value >= 0.6) {
+    highVol.src = "highVol.svg";
+  }
 });
 
-audioPlayer.addEventListener("play",function(){
+let songtimer = function () {
+  songtime.value++;
+  console.log(songtime.value++);
+};
+
+audioPlayer.addEventListener("play", function () {
   audioPlayer.volume = volControl.value;
+  setInterval(songtimer(), stepValue*1000);
+});
+
+audioPlayer.addEventListener("pause",function(){
+  clearInterval(songtimer);
 });
 
 // script.js

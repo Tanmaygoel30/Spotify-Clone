@@ -14,14 +14,16 @@ body {
     width: 25vw;
     margin-right: 3px;
     height: 100vh;
+    /* border: 2px solid red; */
+    padding: 7px;
 }
 
 .home {
     background-color: #121212;
     padding: 8px 15px;
-    margin: 7px;
+    margin-bottom: 7px;
     border-radius: 8px;
-    height: 18%;
+    height: 20%;
 }
 
 .home ul li{
@@ -35,7 +37,7 @@ body {
 .library {
     background-color: #121212;
     padding: 8px 15px;
-    margin: 7px;
+    /* margin: 7px; */
     border-radius: 8px;
     height: 80%;
     min-height: 50vh;
@@ -69,7 +71,6 @@ body {
 .right {
     background-color: #121212;
     width: 75vw;
-    margin-top: 7px;
     border-radius: 8px;
     height: 100vh;
     position: relative;
@@ -182,6 +183,20 @@ body {
     padding: 0px 15px;
 }
 
+.songButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #songtime {
+    border: 2px solid ;
+    width: 13vw;
+    height: 1vh;
+    border-radius: 5px; 
+} */
+
 #pauseBt {
     display: none;
 }
@@ -211,6 +226,13 @@ body {
     to {
         left: -100%;
     }
+}
+
+#volSpace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .invert {
