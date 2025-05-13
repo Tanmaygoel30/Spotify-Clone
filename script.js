@@ -183,7 +183,7 @@ playBt.addEventListener("click", () => {
     console.log("Time out func called");
     playBt.style.display = "inline-block";
     pauseBt.style.display = "none";
-  }, songDuration*1000);
+  }, songDuration * 1000);
 });
 
 pauseBt.addEventListener("click", () => {
@@ -196,18 +196,30 @@ const volControl = document.querySelector("#volumeControl");
 
 audioPlayer.volume = volControl.value;
 
-const highVol = document.querySelector("#highVol");
+const songVol = document.querySelector("#songVol");
+
+songVol.addEventListener("click", function () {
+  if (songVol.src.endsWith("mute.svg")) {
+    volControl.value = 0.6;
+    audioPlayer.volume = volControl.value;
+    songVol.src = "highVol.svg";
+  } else {
+    volControl.value = 0;
+    audioPlayer.volume = volControl.value;
+    songVol.src = "mute.svg";
+  }
+});
 
 volControl.addEventListener("input", function () {
   audioPlayer.volume = volControl.value;
   if (volControl.value == 0) {
-    highVol.src = "mute.svg";
+    songVol.src = "mute.svg";
   }
   if (volControl.value < 0.6 && volControl.value != 0) {
-    highVol.src = "lowVol.svg";
+    songVol.src = "lowVol.svg";
   }
   if (volControl.value >= 0.6) {
-    highVol.src = "highVol.svg";
+    songVol.src = "highVol.svg";
   }
 });
 
@@ -218,10 +230,10 @@ let songtimer = function () {
 
 audioPlayer.addEventListener("play", function () {
   audioPlayer.volume = volControl.value;
-  setInterval(songtimer(), stepValue*1000);
+  setInterval(songtimer(), stepValue * 1000);
 });
 
-audioPlayer.addEventListener("pause",function(){
+audioPlayer.addEventListener("pause", function () {
   clearInterval(songtimer);
 });
 

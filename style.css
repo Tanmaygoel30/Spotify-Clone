@@ -190,12 +190,21 @@ body {
     align-items: center;
 }
 
-/* #songtime {
-    border: 2px solid ;
+#songtime {
+    border: 2px solid gray;
     width: 13vw;
     height: 1vh;
     border-radius: 5px; 
-} */
+    position: relative;
+}
+
+#indicator {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    background-color: aliceblue;
+}
 
 #pauseBt {
     display: none;
