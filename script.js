@@ -3,22 +3,31 @@ const container = document.querySelector(".cardContainer");
 let audioPlayer = document.querySelector("#audioPlayer");
 let playBt = document.querySelector("#playBt");
 let pauseBt = document.querySelector("#pauseBt");
+let previousBt = document.querySelector("#previousBt");
+let nextBt = document.querySelector("#nextBt");
 
-let songtime = document.querySelector("#songtime");
+let songtime = document.querySelector("#indicator");
 let songDuration;
-let stepValue;
+let incValue;
+let index = -1;
+let song;
+const currSong = document.querySelector(".scroll-text");
+
+let timer = document.querySelector("#timer");
+let songLen = document.querySelector("#songLen");
 
 let loadCard = function (content) {
-  let song = content.tracks.items;
+  song = content.tracks.items;
 
   container.innerHTML = "";
 
   song.forEach((playlist) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
+    index++;
+    const cardNew = document.createElement("div");
+    cardNew.classList.add("card");
     //console.log("each content called");
 
-    card.innerHTML = `
+    cardNew.innerHTML = `
             <div class="play">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" color="#000000" fill="green">
                         <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
@@ -30,28 +39,91 @@ let loadCard = function (content) {
             <h3>${playlist.name}</h3>
             <p>${playlist.artists[0]?.name}</p> `;
 
-    const currSong = document.querySelector(".scroll-text");
-    card.addEventListener("click", () => {
+    cardNew.addEventListener("click", () => {
+      console.log("Song at index " + song.indexOf(playlist));
       audioPlayer.src = playlist.preview_url;
       audioPlayer.play();
       audioPlayer.addEventListener("loadedmetadata", () => {
         songDuration = audioPlayer.duration;
         console.log("Song Time " + songDuration);
-        stepValue = 1 / songDuration;
-        songtime.steps = stepValue;
-        console.log("Step value " + stepValue);
+        songLen.textContent = parseFloat(songDuration.toFixed(2));
       });
+      // songtime.width = "0";
+      // incValue = 100 / songDuration;
 
       playBt.style.display = "none";
       pauseBt.style.display = "inline-block";
 
+      let timeTrack = 0;
+      let songTrack;
+
+      audioPlayer.addEventListener("play", () => {
+        // songDuration = audioPlayer.duration;
+        // if (!songTrack) {
+        //   songTrack = setInterval(() => {
+        //     console.log("Inside Interval");
+        //     timeTrack++;
+
+        //     if (timeTrack >= songDuration) {
+        //       clearInterval(songTrack);
+        //       songTrack = null;
+        //       timeTrack = 0;
+        //       nextFunc();
+        //     }
+        //   }, 1000);
+        // }
+        let timeVal = 0.0;
+        songTrack = setInterval(() => {
+          console.log("Inside Interval");
+          if (timeVal < songDuration) {
+            timeVal += 0.01;
+            timer.textContent = timeVal;
+          } else {
+            clearInterval(songTrack);
+          }
+        }, 10);
+      });
+
       currSong.innerHTML = "";
       currSong.innerHTML = `<h3>${playlist.name}</h3>`;
+
+      previousBt.addEventListener("click", () => {
+        index = song.indexOf(playlist);
+        index--;
+        if (index < 0) index = 0; // loop back to same song
+
+        if (song[index]?.preview_url) {
+          audioPlayer.src = song[index].preview_url;
+          audioPlayer.play();
+          currSong.innerHTML = "";
+          currSong.innerHTML = `<h3>${song[index].name}</h3>`;
+          playlist = song[index];
+        } else {
+          console.error("Missing preview_url at index:", index, song[index]);
+        }
+      });
+
+      let nextFunc = () => {
+        index = song.indexOf(playlist);
+        index++;
+        if (index > song.length - 1) index = 0; // loop back to first song
+
+        if (song[index]?.preview_url) {
+          audioPlayer.src = song[index].preview_url;
+          audioPlayer.play();
+          currSong.innerHTML = "";
+          currSong.innerHTML = `<h3>${song[index].name}</h3>`;
+          playlist = song[index];
+        } else {
+          console.error("Missing preview_url at index:", index, song[index]);
+        }
+      };
+      nextBt.addEventListener("click", nextFunc);
 
       history.pushState({ songName: `${playlist.name}` }, "", "");
     });
 
-    container.appendChild(card);
+    container.appendChild(cardNew);
   });
 };
 
@@ -179,11 +251,6 @@ playBt.addEventListener("click", () => {
   audioPlayer.play();
   playBt.style.display = "none";
   pauseBt.style.display = "inline-block";
-  setTimeout(function () {
-    console.log("Time out func called");
-    playBt.style.display = "inline-block";
-    pauseBt.style.display = "none";
-  }, songDuration * 1000);
 });
 
 pauseBt.addEventListener("click", () => {
@@ -223,18 +290,18 @@ volControl.addEventListener("input", function () {
   }
 });
 
-let songtimer = function () {
-  songtime.value++;
-  console.log(songtime.value++);
-};
+// let progressBar = setInterval(function () {
+//   if (songtime.widht < songDuration) {
+//     songtime.widht += incValue;
+//   }
+//   else{
+//     clearInterval(progressBar);
+//   }
+// },1000);
 
 audioPlayer.addEventListener("play", function () {
   audioPlayer.volume = volControl.value;
-  setInterval(songtimer(), stepValue * 1000);
-});
-
-audioPlayer.addEventListener("pause", function () {
-  clearInterval(songtimer);
+  // progressBar;
 });
 
 // script.js

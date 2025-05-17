@@ -15,7 +15,7 @@ body {
     margin-right: 3px;
     height: 100vh;
     /* border: 2px solid red; */
-    padding: 7px;
+    padding: 7px 7px 7px 7px;
 }
 
 .home {
@@ -72,8 +72,9 @@ body {
     background-color: #121212;
     width: 75vw;
     border-radius: 8px;
-    height: 100vh;
+    height: 100vh-7px;
     position: relative;
+    margin-top: 7px;
 }
 
 .header {
@@ -171,7 +172,7 @@ body {
 
 .playBar {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
     height: 50px;
     background-color: rgba(14, 237, 14, 0.779);
@@ -189,6 +190,18 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+#timeInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3em;
+}
+
+/* #timer {
+    border: 2px solid red;
+    width: 1em;
+} */
 
 #songtime {
     border: 2px solid gray;
