@@ -195,18 +195,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.3em;
+    /* gap: 0.3em; */
+    width: 14vw;
+    height: 2vh;
 }
-
-/* #timer {
-    border: 2px solid red;
-    width: 1em;
-} */
 
 #songtime {
     border: 2px solid gray;
-    width: 13vw;
-    height: 1vh;
+    width: 66%;
+    height: 50%;
     border-radius: 5px; 
     position: relative;
 }
@@ -215,8 +212,8 @@ body {
     height: 100%;
     position: absolute;
     left: 0;
-    width: 50%;
     background-color: aliceblue;
+    border-radius: 5px;
 }
 
 #pauseBt {

@@ -15,6 +15,7 @@ const currSong = document.querySelector(".scroll-text");
 
 let timer = document.querySelector("#timer");
 let songLen = document.querySelector("#songLen");
+let indicator = document.querySelector("#indicator");
 
 let loadCard = function (content) {
   song = content.tracks.items;
@@ -42,11 +43,11 @@ let loadCard = function (content) {
     cardNew.addEventListener("click", () => {
       console.log("Song at index " + song.indexOf(playlist));
       audioPlayer.src = playlist.preview_url;
-      audioPlayer.play();
       audioPlayer.addEventListener("loadedmetadata", () => {
         songDuration = audioPlayer.duration;
         console.log("Song Time " + songDuration);
-        songLen.textContent = parseFloat(songDuration.toFixed(2));
+        let Duration = songDuration / 100;
+        songLen.textContent = parseFloat(Duration.toFixed(2));
       });
       // songtime.width = "0";
       // incValue = 100 / songDuration;
@@ -72,20 +73,31 @@ let loadCard = function (content) {
         //     }
         //   }, 1000);
         // }
-        let timeVal = 0.0;
-        songTrack = setInterval(() => {
-          console.log("Inside Interval");
-          if (timeVal < songDuration) {
-            timeVal += 0.01;
-            timer.textContent = timeVal;
-          } else {
-            clearInterval(songTrack);
-          }
-        }, 10);
+
+
+        // let timeVal = 0.0;
+        // songTrack = setInterval(() => {
+        //   if (timeVal < songDuration) {
+        //     timeVal += 0.01;
+        //     timer.textContent = parseFloat(timeVal.toFixed(2));
+        //   } else {
+        //     clearInterval(songTrack);
+        //   }
+        // }, 1000);
+
+        audioPlayer.addEventListener("timeupdate", () => {
+          let currTime = audioPlayer.currentTime;
+          indicator.style.width = `${((currTime/songDuration)*100)}%`;
+          currTime = currTime / 100;
+          timer.textContent = parseFloat(currTime.toFixed(2));
+          // console.log("Current Time:", audioPlayer.currentTime.toFixed(2));
+        });
       });
 
       currSong.innerHTML = "";
       currSong.innerHTML = `<h3>${playlist.name}</h3>`;
+
+      audioPlayer.play();
 
       previousBt.addEventListener("click", () => {
         index = song.indexOf(playlist);
@@ -289,15 +301,6 @@ volControl.addEventListener("input", function () {
     songVol.src = "highVol.svg";
   }
 });
-
-// let progressBar = setInterval(function () {
-//   if (songtime.widht < songDuration) {
-//     songtime.widht += incValue;
-//   }
-//   else{
-//     clearInterval(progressBar);
-//   }
-// },1000);
 
 audioPlayer.addEventListener("play", function () {
   audioPlayer.volume = volControl.value;
