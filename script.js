@@ -17,6 +17,12 @@ let timer = document.querySelector("#timer");
 let songLen = document.querySelector("#songLen");
 let indicator = document.querySelector("#indicator");
 
+let right = document.querySelector(".right");
+let rightMost = document.querySelector(".rightMost");
+let currentSong = document.querySelector("#currentSong");
+let currentSongImg = document.querySelector("#currentSongImg");
+let currentSongTitle = document.querySelector("#currentSongTitle");
+
 let loadCard = function (content) {
   song = content.tracks.items;
 
@@ -41,6 +47,8 @@ let loadCard = function (content) {
             <p>${playlist.artists[0]?.name}</p> `;
 
     cardNew.addEventListener("click", () => {
+      rightMost.classList.add("rightMostActive");
+      right.style.width = "50vw";
       console.log("Song at index " + song.indexOf(playlist));
       audioPlayer.src = playlist.preview_url;
       audioPlayer.addEventListener("loadedmetadata", () => {
@@ -48,6 +56,8 @@ let loadCard = function (content) {
         console.log("Song Time " + songDuration);
         let Duration = songDuration / 100;
         songLen.textContent = parseFloat(Duration.toFixed(2));
+        currentSongImg.src = `${playlist.album.images[0]?.url}`;
+        currentSongTitle.innerHTML = `<h3>${playlist.name}</h3>`;
       });
       // songtime.width = "0";
       // incValue = 100 / songDuration;
@@ -110,6 +120,8 @@ let loadCard = function (content) {
           currSong.innerHTML = "";
           currSong.innerHTML = `<h3>${song[index].name}</h3>`;
           playlist = song[index];
+          currentSongImg.src = `${playlist.album.images[0]?.url}`;
+          currentSongTitle.innerHTML = `<h3>${playlist.name}</h3>`;
         } else {
           console.error("Missing preview_url at index:", index, song[index]);
         }
@@ -126,6 +138,8 @@ let loadCard = function (content) {
           currSong.innerHTML = "";
           currSong.innerHTML = `<h3>${song[index].name}</h3>`;
           playlist = song[index];
+          currentSongImg.src = `${playlist.album.images[0]?.url}`;
+          currentSongTitle.innerHTML = `<h3>${playlist.name}</h3>`;
         } else {
           console.error("Missing preview_url at index:", index, song[index]);
         }

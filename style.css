@@ -254,6 +254,41 @@ body {
     gap: 0.5rem;
 }
 
+.rightMost {
+    width: 25vw;
+    margin-left: 3px;
+    height: 100vh-7px;
+    background-color: #121212;
+    border-radius: 8px;
+    margin-top: 7px;
+    display: none;
+    padding: 7px 7px 7px 7px;
+    position: relative;
+}
+
+.rightMostActive {
+    display: block;
+}
+
+#currentSongImg {
+    height: 50vh;
+    width: 23vw;
+    margin: 0.3em;
+    /* border: 2px solid red; */
+    object-fit: contain;
+}
+
+#currentSongTitle {
+    position: absolute;
+    top: 1.5em;
+    left: 1.5em;
+    /* border: 2px solid red; */
+}
+
+#currentSongTitle h3 {
+    font-size: 2em;
+}
+
 .invert {
     filter: invert(1);
 }
